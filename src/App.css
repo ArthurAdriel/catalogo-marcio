@@ -1,0 +1,36 @@
+.hero {
+  background-color: var(--preto-luxo);
+  color: white;
+  padding: 80px 10%;
+  text-align: left;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  max-width: 500px;
+  margin: 20px 0;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Mobile: 2 colunas */
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (min-width: 1024px) {
+  .catalog-grid {
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 colunas */
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.brand { font-size: 0.8rem; color: var(--cinza-texto); text-transform: uppercase; }
+.price { font-weight: bold; margin-top: 10px; }
+.btn-primary { background: var(--dourado); border: none; padding: 15px 30px; cursor: pointer; }
