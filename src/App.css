@@ -1,36 +1,218 @@
+/* src/App.css */
+
 .hero {
-  background-color: var(--preto-luxo);
+  /* 1. Imagem de Fundo */
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("./assets/banner_image.png");
+
+  background-size: cover; /* A imagem cobre toda a área sem distorcer */
+  background-position: center; /* Centraliza a foto */
+  background-attachment: fixed; /* Efeito Parallax elegante ao rolar a página (opcional) */
+
+  /* 3. Espaçamento e Alinhamento */
   color: white;
-  padding: 80px 10%;
+  padding: 120px 10%; /* Aumentei o padding para dar mais "ar" ao banner */
+  display: flex;
+  align-items: center; /* Centraliza o conteúdo verticalmente */
   text-align: left;
+  min-height: 80vh; /* O banner ocupará 80% da altura da tela */
+}
+
+.hero-content {
+  max-width: 650px; /* Limita a largura do texto para não ficar gigante */
+}
+
+/* 4. Refinando a Tipografia */
+.hero-subtitle {
+  display: block;
+  font-size: 0.8rem;
+  color: #c5a059; /* Dourado suave para o subtítulo */
+  letter-spacing: 4px; /* Espaçamento entre letras para dar ar premium */
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .hero h1 {
-  font-size: 3rem;
-  max-width: 500px;
-  margin: 20px 0;
+  font-size: 3.5rem; /* Título grande e impactante */
+  line-height: 1.2; /* Ajuste do espaçamento entre linhas */
+  font-weight: 300; /* Fonte mais fina para elegância (se sua fonte permitir) */
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif; /* serifada para títulos de luxo */
 }
 
+.hero p {
+  font-size: 1.1rem;
+  color: #ccc; /* Cinza claro para não brigar com o título */
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* 5. Melhorando o Botão */
+.btn-primary {
+  background-color: #c5a059; /* Dourado */
+  color: #000;
+  border: none;
+  padding: 15px 35px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px; /* Borda quase quadrada */
+}
+
+.btn-primary:hover {
+  background-color: #e2c081; /* Dourado mais claro no hover */
+  transform: translateY(-3px); /* Leve subida */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background-color: #000; /* Fundo preto como a imagem */
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li {
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-icons span {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  font-family: "Playfair Display", serif;
+  color: var(--preto-luxo);
+  font-weight: 400;
+  position: relative;
+  padding-left: 75px;
+}
+
+/* 1. O Grid de Produtos: Precisa limitar quantas colunas aparecem */
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Mobile: 2 colunas */
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(4, 1fr); /* Mobile: Sempre 2 colunas */
+  gap: 20px; /* Espaço entre os cards */
+  padding: 20px 5%; /* Espaço nas laterais do site */
 }
 
-@media (min-width: 1024px) {
+/* 2. O Card do Produto: Fundo branco e organização */
+.card {
+  background-color: #fff;
+  border-radius: 8px; /* Bordas arredondadas suaves */
+  overflow: hidden; /* Garante que nada saia do card */
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease; /* Efeito de sombra ao passar o mouse */
+  border: 2px solid #f0f0f0; /* Borda bem fina e clara */
+}
+
+.card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+/* 3. A ÁREA DA IMAGEM: O ponto crítico do seu erro */
+.card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Força o contêiner a ser um quadrado perfeito */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative; /* Para posicionar o coração de favorito */
+  background-color: #fff;
+}
+
+.wishlist-btn {
+  position: absolute; /* Ele flutua sobre a imagem */
+  top: 15px; /* Distância do topo */
+  right: 15px; /* Distância da direita */
+
+  background: white; /* Fundo branco circular igual ao modelo */
+  border: 1px solid #eee;
+  border-radius: 50%; /* Faz o botão ser um círculo perfeito */
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #333;
+  transition: all 0.3s ease;
+  z-index: 10; /* Garante que fique acima da imagem do perfume */
+}
+
+.wishlist-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1); /* Dá um leve aumento ao passar o mouse */
+}
+
+/* 4. A IMAGEM PROPRIAMENTE DITA: Ajuste final */
+.card-image img {
+  max-width: 90%; /* A imagem nunca será maior que o card */
+  max-height: 90%; /* Limita a altura também para fotos verticais */
+  object-fit: contain; /* Garante que o frasco apareça inteiro sem distorcer ou cortar */
+  padding: 10px;
+}
+
+/* 5. Estilos das informações (Texto) abaixo da imagem */
+.card-info {
+  padding: 15px;
+  text-align: left; /* Alinhamento à esquerda igual ao modelo */
+}
+
+.brand {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.type {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+/* Responsividade: Em telas maiores (computador), mostra 4 colunas */
+@media (max-width: 780px) {
   .catalog-grid {
-    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 colunas */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
-
-.card {
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.brand { font-size: 0.8rem; color: var(--cinza-texto); text-transform: uppercase; }
-.price { font-weight: bold; margin-top: 10px; }
-.btn-primary { background: var(--dourado); border: none; padding: 15px 30px; cursor: pointer; }
