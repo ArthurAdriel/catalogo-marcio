@@ -17,7 +17,7 @@
   display: flex;
   align-items: center; /* Centraliza o conteúdo verticalmente */
   text-align: left;
-  min-height: 80vh; /* O banner ocupará 80% da altura da tela */
+  min-height: 100vh; /* O banner ocupará 80% da altura da tela */
 }
 
 .hero-content {
@@ -72,30 +72,100 @@
 }
 
 .navbar {
+  position: fixed; /* Fixa no topo ao rolar a página */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7); /* Preto com transparência */
+  backdrop-filter: blur(10px); /* Efeito de desfoque no fundo (moderno) */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória sutil */
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 5%;
-  background-color: #000; /* Fundo preto como a imagem */
-  color: white;
+  padding: 15px 5%;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #fff;
+}
+
+.logo-subtext {
+  font-size: 0.6rem;
+  color: #c5a059; /* Dourado */
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 30px;
 }
 
 .nav-links li {
-  font-size: 0.9rem;
-  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
-.nav-icons span {
-  margin-left: 15px;
+.nav-links li:hover, .nav-links li.active {
+  color: #fff;
+}
+
+.nav-links li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #c5a059;
+  transition: width 0.3s ease;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 20px;
   cursor: pointer;
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #c5a059;
+  font-size: 0.6rem;
+  padding: 2px 5px;
+  border-radius: 50%;
+  color: #000;
 }
 
 .section-header h2 {

@@ -72,11 +72,6 @@ function App() {
           ))}
         </section>
       </main>
-
-      {/* 4. Rodapé Simples */}
-      <footer className="footer">
-        <p>&copy; 2026 Essenza Perfumaria - Projeto ADS</p>
-      </footer>
     </div>
   );
 }
