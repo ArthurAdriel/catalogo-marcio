@@ -194,6 +194,7 @@
   flex-direction: column;
   transition: box-shadow 0.3s ease; /* Efeito de sombra ao passar o mouse */
   border: 2px solid #f0f0f0; /* Borda bem fina e clara */
+  cursor: pointer;
 }
 
 .card:hover {
@@ -279,6 +280,70 @@
   font-size: 1.1rem;
   color: #000;
 }
+
+.detalhe-container {
+  padding: 120px 10% 40px; /* 120px no topo para compensar a Navbar fixa */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.btn-voltar {
+  background: none;
+  border: none;
+  color: #c5a059;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.detalhe-conteudo {
+  display: flex;
+  gap: 50px;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.galeria-fotos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.foto-principal img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.fotos-miniaturas {
+  display: flex;
+  gap: 10px;
+}
+
+.fotos-miniaturas img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border: 1px solid #eee;
+  cursor: pointer;
+  padding: 5px;
+  background: white;
+}
+
+.fotos-miniaturas img.ativa {
+  border: 2px solid #c5a059; /* Borda dourada na foto ativa */
+}
+
+.detalhe-info {
+  flex: 1;
+}
+
+/* Reutilize os padrões de cores e texto */
+.detalhe-info h2 { font-size: 2.5rem; margin: 10px 0; }
+.preco-grande { font-size: 2rem; font-weight: bold; margin: 20px 0; color: #000; }
+.btn-comprar { background: #000; color: white; width: 100%; padding: 15px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
 
 /* Responsividade: Em telas maiores (computador), mostra 4 colunas */
 @media (max-width: 780px) {
