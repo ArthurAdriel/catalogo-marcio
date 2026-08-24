@@ -1,9 +1,17 @@
-export default function PerfumeCard({ perfume, aoSelecionar }) {
+export default function PerfumeCard({ perfume, aoSelecionar, favorito, aoAlternarFavorito }) {
   return (
     <div className="card">
       <div className="card-image">
         <img src={perfume.img[0]} alt={perfume.nome} /> {/* Pegamos a primeira foto */}
-        <button className="wishlist-btn">♡</button>
+        <button
+          className={`wishlist-btn${favorito ? ' ativo' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            aoAlternarFavorito(perfume);
+          }}
+        >
+          {favorito ? '♥' : '♡'}
+        </button>
       </div>
       <div className="card-info">
         <p className="brand">{perfume.marca}</p>
