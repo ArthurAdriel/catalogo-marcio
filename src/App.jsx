@@ -181,6 +181,8 @@ function App() {
         <DetalhePerfume
           perfume={perfumeSelecionado}
           aoVoltar={irParaInicio}
+          favorito={favoritosIds.includes(perfumeSelecionado.id)}
+          aoAlternarFavorito={alternarFavorito}
         />
       ) : (
         // Se NÃO houver perfume selecionado (null), mostra a página inicial normal

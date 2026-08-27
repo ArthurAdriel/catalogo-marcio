@@ -51,6 +51,29 @@
   font-weight: 300;
 }
 
+@media (max-width: 780px) {
+  .hero {
+    /* background-attachment: fixed tem suporte instável em navegadores mobile */
+    background-attachment: scroll;
+    padding: 110px 8% 60px;
+    min-height: 90vh;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
 /* 5. Melhorando o Botão */
 .btn-primary {
   background-color: #c5a059; /* Dourado */
@@ -121,6 +144,7 @@
   display: flex;
   list-style: none;
   gap: 30px;
+  margin: 0;
 }
 
 .nav-links li {
@@ -157,24 +181,110 @@
   border: none;
   color: white;
   font-size: 1.2rem;
+  line-height: 1;
   margin-left: 20px;
   cursor: pointer;
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  -webkit-appearance: none;
+  appearance: none;
+  font-variant-emoji: emoji;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hamburger-btn span {
+  width: 22px;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 860px) {
+  .navbar-container {
+    position: relative;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(10px);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .nav-links.aberto {
+    max-height: 400px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links li {
+    padding: 16px 8%;
+  }
+
+  .nav-links li::after {
+    display: none;
+  }
 }
 
 .icon-badge {
   position: absolute;
-  top: -5px;
-  right: -10px;
+  top: -4px;
+  right: -8px;
   background-color: #c5a059;
-  font-size: 0.6rem;
-  padding: 2px 5px;
-  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
   color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .content {
   padding: 90px 0 50px;
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 60px 0 40px;
+  }
 }
 
 .section-header {
@@ -475,7 +585,7 @@
   font-size: 0.95rem;
 }
 
-.btn-comprar {
+.btn-favoritar {
   background: var(--preto-luxo);
   color: white;
   width: 100%;
@@ -490,7 +600,7 @@
   transition: all 0.3s ease;
 }
 
-.btn-comprar:hover {
+.btn-favoritar:hover {
   background: var(--dourado);
   color: #000;
   transform: translateY(-2px);
@@ -504,6 +614,29 @@
   }
 }
 
+@media (max-width: 480px) {
+  .detalhe-container {
+    padding: 100px 5% 40px;
+  }
+
+  .detalhe-conteudo {
+    padding: 18px;
+  }
+
+  .detalhe-info h2 {
+    font-size: 1.9rem;
+  }
+
+  .preco-grande {
+    font-size: 1.6rem;
+  }
+
+  .fotos-miniaturas img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 .login-overlay {
   position: fixed;
   inset: 0;
@@ -512,6 +645,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
   z-index: 2000;
 }
 
@@ -523,6 +657,12 @@
   padding: 40px;
   width: 100%;
   max-width: 380px;
+}
+
+@media (max-width: 420px) {
+  .login-modal {
+    padding: 30px 24px;
+  }
 }
 
 .login-fechar {
@@ -606,27 +746,31 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
   z-index: 2000;
 }
 
 .favoritos-painel {
-  position: fixed;
-  top: 80px;
-  right: 5%;
+  position: relative;
   background-color: #111;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--dourado);
   border-radius: 4px;
   width: 100%;
-  max-width: 340px;
+  max-width: 380px;
   max-height: 70vh;
   overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
 }
 
 .favoritos-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 25px;
+  padding: 18px 22px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -634,7 +778,7 @@
   color: #fff;
   font-family: "Playfair Display", serif;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 
 .favoritos-header .login-fechar {
@@ -655,11 +799,11 @@
 .favoritos-item {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 15px 25px;
+  gap: 14px;
+  padding: 14px 22px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: background-color 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background-color 0.25s ease;
 }
 
 .favoritos-item:hover {
@@ -671,25 +815,48 @@
 }
 
 .favoritos-item img {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   background-color: #fff;
   border-radius: 4px;
-  padding: 5px;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.favoritos-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
 }
 
 .favoritos-info .brand {
   color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0;
 }
 
 .favoritos-info .name {
   color: #fff;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .favoritos-info .price {
   color: #c5a059;
   font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 25px 5%;
+  border-top: 1px solid #eee;
+  color: #999;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
 }
 
 .catalogo-vazio {
@@ -752,7 +919,41 @@
 
 @media (max-width: 480px) {
   .catalog-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .section-header {
+    margin-bottom: 35px;
+  }
+
+  .card-info {
+    padding: 12px;
+  }
+
+  .name {
+    font-size: 0.95rem;
+  }
+
+  .price {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .btn-details {
+    font-size: 0.65rem;
+    padding: 8px;
+    letter-spacing: 1px;
+  }
+
+  .wishlist-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
   }
 }
 
@@ -963,5 +1164,25 @@
 @media (max-width: 900px) {
   .admin-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-container {
+    padding: 100px 5% 40px;
+  }
+
+  .admin-card {
+    padding: 22px;
+  }
+
+  .admin-linha {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .admin-header-acoes {
+    width: 100%;
+    justify-content: space-between;
   }
 }

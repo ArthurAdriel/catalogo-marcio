@@ -1,7 +1,7 @@
 // src/components/DetalhePerfume.jsx
 import { useState } from 'react';
 
-export default function DetalhePerfume({ perfume, aoVoltar }) {
+export default function DetalhePerfume({ perfume, aoVoltar, favorito, aoAlternarFavorito }) {
   // Estado para controlar qual foto principal está ativa
   const [fotoAtiva, setFotoAtiva] = useState(perfume.img[0]);
 
@@ -40,7 +40,9 @@ export default function DetalhePerfume({ perfume, aoVoltar }) {
             <p>{perfume.descricao}</p>
           </div>
 
-          <button className="btn-comprar">Adicionar à Sacola</button>
+          <button className="btn-favoritar" onClick={() => aoAlternarFavorito(perfume)}>
+            {favorito ? '♥ Remover dos Curtidos' : '♡ Adicionar aos Curtidos'}
+          </button>
         </div>
       </div>
     </div>
